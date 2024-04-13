@@ -33,7 +33,11 @@ class GamesController extends Controller
             //dd('Validation failed', $this->request()->errors());
         }
 
-        dd('Validation succeeded');
+        $id = $this->db()->insert('games',[
+            'name' => $this->request()->input('name'),
+        ]);
+
+        dd("Game added successfully");
 
     }
 }

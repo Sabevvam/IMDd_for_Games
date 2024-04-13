@@ -16,8 +16,9 @@
         </div>
         <?php if($session->has('name')) { ?>
             <ul>
-                <li style="color: red;">Error 1</li>
-                <li style="color: red;">Error 2</li>
+                <?php foreach ($session->getFlash('name') as $error) {?>
+                <li style="color: red;"><?php echo $error?></li>
+                <?php } ?>
             </ul>
         <?php } ?>
 

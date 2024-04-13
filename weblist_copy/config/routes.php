@@ -11,8 +11,9 @@ return [
     Route::get('/games',[GamesController::class, 'index']),
     Route::get('/admin/games/add',[GamesController::class, 'add']),
     Route::post('/admin/games/add',[GamesController::class, 'store']),
-    Route::post(uri: '/test', action: function () {
-        include_once  APP_PATH.'/views/pages/games.php';
-    }),
+    Route::get('/register', [\App\Controllers\RegisterController::class, 'index']),
+    Route::post('/register', [\App\Controllers\RegisterController::class, 'register']),
+    Route::get('/login', [\App\Controllers\LoginController::class, 'index']),
+    Route::post('/login', [\App\Controllers\LoginController::class, 'login']),
 
 ];

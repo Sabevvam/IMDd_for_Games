@@ -2,19 +2,19 @@
 
 namespace App\Kernel\View;
 
+use App\Kernel\Auth\AuthInterface;
 use App\Kernel\Exceptions\ViewNotFoundException;
 use App\Kernel\Session\Session;
+use App\Kernel\Session\SessionInterface;
 
-class View
+class View implements ViewInterface
 {
 
     public function __construct(
-        private Session $session
-    )
-    {
-        $this->session = $session;
+        private SessionInterface $session,
+        private AuthInterface $auth,
+    ){
     }
-
     public function page(string $name): void
     {
         $viewPath = APP_PATH."/views/pages/$name.php";
@@ -28,6 +28,7 @@ class View
             'session' => $this->session
     ]);
 
+        extract($this->defaultData());
         include_once $viewPath;
     }
 
@@ -40,13 +41,16 @@ class View
             return;
         }
 
+        extract($this->defaultData());
+
         include_once APP_PATH."/views/components/$name.php";
     }
 
     private function defaultData(): array {
         return [
-            'v1iew' => $this,
+            'view' => $this,
             'session' => $this->session,
+            'auth' => $this->auth,
         ];
     }
 }
