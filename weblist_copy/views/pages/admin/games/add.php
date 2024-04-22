@@ -9,7 +9,7 @@
     <h1>Add games page</h1>
 
 
-    <form action="/admin/games/add" method="post">
+    <form action="/admin/games/add" method="post" enctype="multipart/form-data">
         <p>Name</p>
         <div class="div">
             <input type="text" name="name">
@@ -21,6 +21,9 @@
                 <?php } ?>
             </ul>
         <?php } ?>
+        <div class="div">
+            <input type="file" name="image">
+        </div>
 
         <div class="div">
             <button>Add</button>
