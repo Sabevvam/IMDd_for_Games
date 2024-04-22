@@ -8,8 +8,6 @@ class HomeController extends Controller
 {
     public function index():void
     {
-        $view = new View();
-
-        $view->page(name:'home');
+        $this->view('home');
     }
 }

@@ -20,6 +20,13 @@ class GamesController extends Controller
 
     public function store(): void
     {
+
+       $file = $this->request()->file('image');
+
+        $filePath = $file->move('games');
+
+        dd($this->storage()->url($filePath));
+
         $validation = $this->request()->validate([
             'name' => ['required', 'min:3', 'max:50'],
         ]);

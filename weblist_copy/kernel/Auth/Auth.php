@@ -30,6 +30,7 @@ class Auth implements AuthInterface
         }
 
         $this->session->set($this->sessionField(), $user['id']);
+
         return true;
     }
 
