@@ -11,7 +11,7 @@
             <h3 class="mt-3">Новинки</h3>
             <hr>
             <div class="movies">
-                <a href="movie.html" class="card text-decoration-none movies__item">
+                <a href="game.html" class="card text-decoration-none movies__item">
                     <img src="https://www.overclockers.ua/news/games/134302-stalker-legends-of-the-zone-trilogy.jpg" height="200px" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">S.T.A.L.K.E.R.</h5>
