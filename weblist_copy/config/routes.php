@@ -26,4 +26,6 @@ return [
     Route::post('/admin/games/destroy', [\App\Controllers\GamesController::class, 'destroy']),
     Route::get('/admin/games/update', [\App\Controllers\GamesController::class, 'edit']),
     Route::post('/admin/games/update', [\App\Controllers\GamesController::class, 'update']),
+    Route::get('/game', [\App\Controllers\GamesController::class, 'show']),
+    Route::post('/reviews/add', [\App\Controllers\ReviewController::class, 'store']),
 ];

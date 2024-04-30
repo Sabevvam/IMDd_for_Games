@@ -2,9 +2,13 @@
 
 namespace App\Services;
 
+use App\Kernel\Auth\User;
 use App\Kernel\Database\DatabaseInterface;
 use App\Kernel\Upload\UploadedFileInterface;
 use App\Models\Game;
+use App\Models\Review;
+
+
 
 class GameService
 {
@@ -35,7 +39,8 @@ class GameService
                 $game['name'],
                 $game['description'],
                 $game['preview'],
-                $game['category_id']
+                $game['category_id'],
+                $game['created_at']
             );
         }, $games);
     }
@@ -61,11 +66,10 @@ class GameService
             $game['description'],
             $game['preview'],
             $game['category_id'],
-//            $movie['created_at'],
-//            $this->getReviews($id)
+            $game['created_at'],
+            $this->getReviews($id)
         );
     }
-
 
     public function update(int $id, string $name, string $description, ?UploadedFileInterface $image, int $category): void
     {
@@ -84,4 +88,45 @@ class GameService
         ]);
     }
 
+    public function new()
+    {
+        $games = $this->db->get('games', [], ['id' => 'DESC'], 10);
+
+        return array_map(function($game){
+            return new Game(
+                $game['id'],
+                $game['name'],
+                $game['description'],
+                $game['preview'],
+                $game['category_id'],
+                $game['created_at']
+            );
+        }, $games);
+    }
+
+    private function getReviews(int $id): array
+    {
+        $reviews = $this->db->get('reviews', [
+            'game_id' => $id,
+        ]);
+
+        return array_map(function ($review) {
+            $user = $this->db->first('users', [
+                'id' => $review['user_id'],
+            ]);
+
+            return new Review(
+                $review['id'],
+                $review['rating'],
+                $review['review'],
+                $review['created_at'],
+                new User(
+                    $user['id'],
+                    $user['name'],
+                    $user['email'],
+                    $user['password'],
+                )
+            );
+        }, $reviews);
+    }
 }

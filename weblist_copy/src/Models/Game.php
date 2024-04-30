@@ -4,15 +4,15 @@ namespace App\Models;
 
 class Game
 {
-
     public function __construct(
         private int $id,
         private string $name,
         private string $description,
         private string $preview,
-        private int $categoryId
-    )
-    {
+        private int $categoryId,
+        private string $createdAt,
+        private array $reviews = [],
+    ) {
     }
 
     public function id(): int
@@ -38,5 +38,18 @@ class Game
     public function categoryId(): int
     {
         return $this->categoryId;
+    }
+
+    public function createdAt(): string
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * @return array<Review>
+     */
+    public function reviews(): array
+    {
+        return $this->reviews;
     }
 }

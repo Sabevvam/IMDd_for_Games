@@ -108,4 +108,10 @@ class GamesController extends Controller
         $this->redirect('/admin');
     }
 
+    public function show():void
+    {
+        $this->view('game', [
+            'game' => $this->service()->find($this->request()->input('id')),
+        ]);
+    }
 }
