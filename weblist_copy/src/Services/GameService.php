@@ -99,7 +99,8 @@ class GameService
                 $game['description'],
                 $game['preview'],
                 $game['category_id'],
-                $game['created_at']
+                $game['created_at'],
+                $this->getReviews($game['id'])
             );
         }, $games);
     }

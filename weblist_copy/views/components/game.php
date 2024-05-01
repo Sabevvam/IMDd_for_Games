@@ -9,6 +9,6 @@
     <img src="<?php echo $storage->url($game->preview()) ?>" height="200px" class="card-img-top" alt="<?php echo $game->name() ?>">
     <div class="card-body">
         <h5 class="card-title"><?php echo $game->name() ?></h5>
-        <p class="card-text">Бал <span class="badge bg-warning warn__badge">7.9</span></p>
+        <p class="card-text">Бал <span class="badge bg-warning warn__badge"><?php echo $game->avgRating()?></span></p>
     </div>
 </a>

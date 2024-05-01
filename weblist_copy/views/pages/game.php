@@ -19,23 +19,23 @@
                         <div class="col-md-4">
                             <img src="<?php echo $storage->url($game->preview()) ?>" class="img-fluid rounded one-movie__image" alt="<?php echo $game->name() ?>">
                             <?php if ($auth->check()) { ?>
-                                <form action="/reviews/add" method="post" class="m-3 w-100">
+                                <form action="/reviews/add" method="post" class="m-3 w-100" style="width: 415.587px;">
                                     <input type="hidden" value="<?php echo $game->id() ?>" name="id">
                                     <select
                                             class="form-select <?php echo $session->has('rating') ? 'is-invalid' : '' ?>"
                                             name="rating"
                                             aria-label="Default select example"
-                                        <option selected>Бал</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                        <option value="6">6</option>
-                                        <option value="7">7</option>
-                                        <option value="8">8</option>
-                                        <option value="9">9</option>
-                                        <option value="10">10</option>
+                                    <option selected>Бал</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
                                     </select>
                                     <?php if ($session->has('rating')) { ?>
                                         <div id="name" class="invalid-feedback">
@@ -68,7 +68,7 @@
                         <div class="col-md-8">
                             <div class="card-body">
                                 <h1 class="card-title"><?php echo $game->name() ?></h1>
-                                <p class="card-text">Бал <span class="badge bg-warning warn__badge"></span></p>
+                                <p class="card-text">Бал <span class="badge bg-warning warn__badge"><?php echo $game->avgRating() ?></span></p>
                                 <p class="card-text"><?php echo $game->description() ?></p>
                                 <p class="card-text"><small class="text-body-secondary">Додано <?php echo $game->createdAt() ?> </small></p>
                                 <h4>Відгуки</h4>

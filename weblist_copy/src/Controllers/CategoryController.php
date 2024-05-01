@@ -8,6 +8,12 @@ use App\Services\CategoryService;
 class CategoryController extends Controller
 {
     private CategoryService $service;
+    public function index(): void
+    {
+        $this->view('categories', [
+            'categories' => $this->service()->all(),
+        ]);
+    }
     public function create(): void
     {
         $this->view('admin/categories/add');

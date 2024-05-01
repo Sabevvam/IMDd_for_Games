@@ -52,4 +52,17 @@ class Game
     {
         return $this->reviews;
     }
+
+    public function avgRating(): float
+    {
+        $rating = array_map(function (Review $review) {
+            return $review->rating();
+        }, $this->reviews);
+
+        if (count($rating) === 0){
+            return 0;
+        }
+
+        return round(array_sum($rating) / count($rating), 1);
+    }
 }

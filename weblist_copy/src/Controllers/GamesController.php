@@ -110,8 +110,10 @@ class GamesController extends Controller
 
     public function show():void
     {
+        $game = $this->service()->find($this->request()->input('id'));
+
         $this->view('game', [
-            'game' => $this->service()->find($this->request()->input('id')),
-        ]);
+            'game' => $game,
+        ], "{$game->name()}");
     }
 }

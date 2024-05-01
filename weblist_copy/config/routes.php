@@ -28,4 +28,5 @@ return [
     Route::post('/admin/games/update', [\App\Controllers\GamesController::class, 'update']),
     Route::get('/game', [\App\Controllers\GamesController::class, 'show']),
     Route::post('/reviews/add', [\App\Controllers\ReviewController::class, 'store']),
+    Route::get('/categories', [\App\Controllers\CategoryController::class, 'index']),
 ];
